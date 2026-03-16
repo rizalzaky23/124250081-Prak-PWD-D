@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f4ff;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar.navbar-expand-lg.bg-body-tertiary {
+    background: rgba(255,255,255,0.97) !important;
+    padding: 14px 5%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #1a1a2e;
+    font-weight: 700;
+}
+
+.nav-item {
+    margin-left: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 24px;
+    width: 100%;
+    background: white;
+    padding: clamp(24px, 5vw, 40px);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    border: 1.5px solid #e8edf5;
+    box-sizing: border-box;
+}
+
+.form-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f4ff;
+}
+
+/* ── Layanan grid ── */
+.layanan-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.layanan-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 14px 10px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    background: #f8faff;
+}
+
+.layanan-option input[type="radio"] {
+    display: none;
+}
+
+.layanan-option:hover {
+    border-color: #0d6efd;
+    background: #eff5ff;
+    transform: translateY(-2px);
+}
+
+.layanan-option.selected {
+    border-color: #0d6efd;
+    background: #e7f0ff;
+    box-shadow: 0 3px 12px rgba(13,110,253,0.15);
+}
+
+.layanan-icon-wrap {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.layanan-label {
+    font-weight: 700;
+    font-size: .9rem;
+    color: #1a1a2e;
+}
+
+.layanan-desc {
+    font-size: .75rem;
+    color: #64748b;
+}
+
+/* ── Tombol: paksa sejajar dengan !important ── */
+.button {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+#kirim,
+#reset {
+    padding: 11px 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: .9rem;
+    min-width: 130px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+}
+
+#kirim:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(13,110,253,0.28);
+}
+
+#reset:hover {
+    transform: translateY(-2px);
+}
+
+/* ── Footer: paksa background gelap dengan !important ── */
+.contact {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 48px 5% !important;
+    gap: 36px;
+    background-color: #1a1a2e !important;
+    color: white !important;
+}
+
+.contact * {
+    color: rgba(255,255,255,0.75) !important;
+}
+
+.contact h3,
+.contact h5 {
+    color: #ffffff !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.contact h3 {
+    font-size: clamp(18px, 3vw, 26px);
+    margin-bottom: 8px;
+}
+
+.contact h5 {
+    font-size: clamp(14px, 2vw, 18px);
+    margin-bottom: 12px;
+}
+
+.contact p {
+    font-size: .9rem;
+    margin-bottom: 6px;
+}
+
+.contact a {
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.contact a:hover {
+    opacity: 0.6;
+}
+
+.footer {
+    background-color: #11111f !important;
+    color: rgba(255,255,255,0.4) !important;
+    text-align: center;
+    padding: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-size: .85rem;
+}
+
+.footer p {
+    color: rgba(255,255,255,0.4) !important;
+    margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 576px) {
+    .layanan-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .button {
+        flex-direction: column !important;
+    }
+
+    #kirim,
+    #reset {
+        width: 100%;
+    }
+}
