@@ -15,12 +15,13 @@ $errors = [];
 $old    = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $old['name']    = trim($_POST['name']    ?? '');
-    $old['email']   = trim($_POST['email']   ?? '');
-    $old['jumlah']  = trim($_POST['jumlah']  ?? '');
-    $old['layanan'] = trim($_POST['layanan'] ?? '');
-    $old['member']  = trim($_POST['member']  ?? '');
-    $old['setuju']  = isset($_POST['setuju']) ? '1' : '';
+    $old['name']     = trim($_POST['name']     ?? '');
+    $old['email']    = trim($_POST['email']    ?? '');
+    $old['password'] = $_POST['password']      ?? '';
+    $old['jumlah']   = trim($_POST['jumlah']   ?? '');
+    $old['layanan']  = trim($_POST['layanan']  ?? '');
+    $old['member']   = trim($_POST['member']   ?? '');
+    $old['setuju']   = isset($_POST['setuju']) ? '1' : '';
 
     if (empty($old['name']))
         $errors['name'] = 'Nama lengkap wajib diisi.';
@@ -31,6 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['email'] = 'Email wajib diisi.';
     elseif (!filter_var($old['email'], FILTER_VALIDATE_EMAIL))
         $errors['email'] = 'Format email tidak valid.';
+
+    if (empty($old['password']))
+        $errors['password'] = 'Password wajib diisi.';
+    elseif (strlen($old['password']) < 6)
+        $errors['password'] = 'Password minimal 6 karakter.';
 
     if ($old['jumlah'] === '' || !is_numeric($old['jumlah']))
         $errors['jumlah'] = 'Jumlah barang wajib diisi.';
@@ -121,6 +127,27 @@ function fc(string $key, array $errors, array $old): string {
         color: rgba(255,255,255,0.4) !important;
         margin: 0 !important;
     }
+    /* password toggle */
+    .pw-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    .pw-wrap .form-control {
+        padding-right: 44px;
+    }
+    .pw-toggle {
+        position: absolute;
+        right: 12px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        color: #94a3b8;
+    }
+    .pw-toggle:hover { color: #0d6efd; }
   </style>
 </head>
 <body>
@@ -165,6 +192,22 @@ function fc(string $key, array $errors, array $old): string {
             value="<?= old('email', $old) ?>" required>
           <?php if (isset($errors['email'])): ?>
             <div class="invalid-feedback"><?= $errors['email'] ?></div>
+          <?php endif; ?>
+        </div>
+
+        <div>
+          <label for="password" class="form-label fw-semibold d-flex align-items-center gap-1">
+            <?= icon('lock', 14) ?> Password <span class="text-danger ms-1">*</span>
+          </label>
+          <div class="pw-wrap">
+            <input type="password" class="form-control <?= fc('password', $errors, $old) ?>"
+              id="password" name="password" placeholder="Minimal 6 karakter" required>
+            <button type="button" class="pw-toggle" onclick="togglePw()" tabindex="-1">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <?php if (isset($errors['password'])): ?>
+            <div class="invalid-feedback d-block"><?= $errors['password'] ?></div>
           <?php endif; ?>
         </div>
 
@@ -269,12 +312,26 @@ function fc(string $key, array $errors, array $old): string {
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
 lucide.createIcons();
+
 document.querySelectorAll('.layanan-option').forEach(opt => {
     opt.addEventListener('click', () => {
         document.querySelectorAll('.layanan-option').forEach(o => o.classList.remove('selected'));
         opt.classList.add('selected');
     });
 });
+
+function togglePw() {
+    const input = document.getElementById('password');
+    const icon  = document.querySelector('.pw-toggle i');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.setAttribute('data-lucide', 'eye-off');
+    } else {
+        input.type = 'password';
+        icon.setAttribute('data-lucide', 'eye');
+    }
+    lucide.createIcons();
+}
 </script>
 </body>
 </html>
