@@ -22,7 +22,7 @@ $testimonials = [
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    
+
     main { background: linear-gradient(135deg, #dbeafe, #eff6ff, #e0f2fe) !important; }
 
     .nav-link {
@@ -43,17 +43,39 @@ $testimonials = [
 
     .features-section {
         background: #ffffff !important;
-        padding: 60px 0 !important;
+        padding: 80px 0 !important;
         border-top: 1px solid #e2e8f0 !important;
         border-bottom: 3px solid #dbeafe !important;
     }
 
+    .features-section h2,
+    .features-section p,
+    .features-section h5,
+    .features-section span {
+        color: #1a1a2e !important;
+    }
+    .features-section .text-muted {
+        color: #64748b !important;
+    }
+
+  
     .feature-card {
         background: #f8faff !important;
         border-radius: 16px !important;
-        padding: 28px 22px !important;
+        padding: 36px 28px !important;
         border: 1.5px solid #e8edf5 !important;
         transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+        min-height: 200px !important;
+    }
+    .feature-card h5 {
+        color: #1a1a2e !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 10px !important;
+    }
+    .feature-card p {
+        color: #64748b !important;
+        font-size: .88rem !important;
     }
     .feature-card:hover {
         transform: translateY(-6px) !important;
@@ -67,6 +89,9 @@ $testimonials = [
         border-top: 3px solid #dbeafe !important;
         padding: 60px 5% !important;
     }
+
+    #about h4 { color: #1a1a2e !important; }
+    #about p, #about li, #about small { color: #475569 !important; }
 
     .about-content {
         transition: transform 0.25s ease, box-shadow 0.25s ease !important;
